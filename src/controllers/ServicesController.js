@@ -42,6 +42,7 @@ module.exports = async function (request, response, next) {
             .limit(servicesPerPage))
             .map(r => ({
                 ...r,
+                subscription_span: Number(r.subscription_span),
                 is_active: Boolean(r.is_active),
                 is_subscription: Boolean(r.is_subscription),
                 is_unitary_price: Boolean(r.is_unitary_price)

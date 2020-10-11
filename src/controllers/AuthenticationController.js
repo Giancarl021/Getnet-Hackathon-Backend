@@ -46,7 +46,7 @@ module.exports = async function (request, response) {
     return response.status(200).json({
         company,
         bearer_token: bearerToken,
-        expires_in: expiresIn,
+        expires_in: Number(expiresIn),
         refresh_token: refreshToken
     });
 }

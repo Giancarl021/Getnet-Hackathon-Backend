@@ -24,6 +24,7 @@ module.exports = async function (request, response, next) {
 
         return response.json({
             ...service,
+            subscription_span: Number(service.subscription_span),
             is_active: Boolean(service.is_active),
             is_subscription: Boolean(service.is_subscription),
             is_unitary_price: Boolean(service.is_unitary_price)
