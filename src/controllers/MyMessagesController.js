@@ -16,14 +16,14 @@ module.exports = async function (request, response, next) {
             .orWhere('from_cnpj', cnpj)
             .select('*');
 
-        const sent = channelify(messages.filter(message => message.from_cnpj === cnpj), 'to_cnpj', true, 'from_cnpj');
-        const received = channelify(messages.filter(message => message.to_cnpj === cnpj), 'from_cnpj', true, 'to_cnpj');
-
         if(!messages) {
             return response.status(404).json({
                 error: 'Messages for company not found'
             });
         }
+
+        const sent = channelify(messages.filter(message => message.from_cnpj === cnpj), 'to_cnpj', true, 'from_cnpj');
+        const received = channelify(messages.filter(message => message.to_cnpj === cnpj), 'from_cnpj', true, 'to_cnpj');
 
         return response.json({ sent, received });
     } catch (err) {
