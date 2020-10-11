@@ -12,9 +12,9 @@ module.exports = async function (request, response, next) {
     try {
 
         const service = await connection('service')
-            .select('*')
+            .first()
             .where('id', id)
-            .first();
+            .select('*');
 
         if(!service) {
             return response.status(404).json({
