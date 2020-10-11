@@ -1,7 +1,10 @@
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 
-const password = bcrypt.hashSync(process.env.COMPANIES_PASSWORD || 'senha', Math.floor(Math.random() * 10));
+const mockPassword = process.env.MOCK_PASSWORD || 'senha';
+console.log(`[ENVIRONMENT] Mock password: ${mockPassword}`);
+
+const password = bcrypt.hashSync(mockPassword, Math.floor(Math.random() * 10));
 
 module.exports = {
     async seed(knex) {
