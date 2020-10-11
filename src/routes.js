@@ -8,6 +8,7 @@ const CompanyController = require('./controllers/CompanyController');
 const MeController = require('./controllers/MeController');
 const MyMessagesController = require('./controllers/MyMessagesController');
 const MyMessagesWithController = require('./controllers/MyMessagesWithController');
+const SendMessageController = require('./controllers/SendMessageController');
 
 const NotFoundController = require('./controllers/NotFoundController');
 
@@ -32,9 +33,10 @@ routes.get('/me', AuthenticationMiddleware, MeController);
 
 routes.get('/me/messages', AuthenticationMiddleware, MyMessagesController);
 routes.get('/me/messages/:with', AuthenticationMiddleware, MyMessagesWithController);
-routes.post('/me/messages/:to', AuthenticationMiddleware, );
+routes.post('/me/messages/:to', AuthenticationMiddleware, SendMessageController);
 
 routes.get('/me/service', AuthenticationMiddleware, );
+routes.put('/me/service', AuthenticationMiddleware, );
 routes.post('/me/service', AuthenticationMiddleware, );
 
 routes.get('/me/purchases', AuthenticationMiddleware, );
