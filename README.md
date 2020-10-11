@@ -2,6 +2,23 @@
 
 Backend da aplicação Getplace
 
+## Executar
+
+Clone o repositório, então execute os comandos:
+
+Yarn:
+```bash
+yarn
+yarn first-run
+yarn dev
+```
+npm:
+```bash
+npm install
+npm run first-run
+npm run dev
+```
+
 ## Autenticação
 
 A autenticação é feita utilizando JWT. Existem 2 rotas para autenticação e renovação do token:

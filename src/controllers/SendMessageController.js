@@ -1,4 +1,3 @@
-const { where } = require('../database/connection');
 const connection = require('../database/connection');
 
 module.exports = async function (request, response, next) {

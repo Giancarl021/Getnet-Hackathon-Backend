@@ -11,6 +11,9 @@ const MyMessagesController = require('./controllers/MyMessagesController');
 const MyMessagesWithController = require('./controllers/MyMessagesWithController');
 const SendMessageController = require('./controllers/SendMessageController');
 const MyServiceController = require('./controllers/MyServiceController');
+const MyPurchasesController = require('./controllers/MyPurchasesController');
+const MySalesController = require('./controllers/MySalesController');
+const MyPendingTradesController = require('./controllers/MyPendingTradesController');
 
 const NotFoundController = require('./controllers/NotFoundController');
 
@@ -45,11 +48,11 @@ routes.get('/me/service', AuthenticationMiddleware, MyServiceController);
 routes.put('/me/service', AuthenticationMiddleware, );
 routes.post('/me/service', AuthenticationMiddleware, );
 
-routes.get('/me/purchases', AuthenticationMiddleware, );
-routes.get('/me/sales', AuthenticationMiddleware, );
+routes.get('/me/purchases', AuthenticationMiddleware, MyPurchasesController);
+routes.get('/me/sales', AuthenticationMiddleware, MySalesController);
 routes.get('/me/history', AuthenticationMiddleware, );
 
-routes.get('/me/pending', AuthenticationMiddleware, );
+routes.get('/me/pending', AuthenticationMiddleware, MyPendingTradesController);
 
 routes.all('*', AuthenticationMiddleware, NotFoundController);
 
