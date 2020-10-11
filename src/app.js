@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const errorHandler = require('./services/errorHandler')
+const ErrorHandler = require('./services/error-handler')
 
 const routes = require('./routes');
 
@@ -10,6 +10,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.use(errorHandler);
+app.use(ErrorHandler);
 
 module.exports = app;

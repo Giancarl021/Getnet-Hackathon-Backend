@@ -14,7 +14,7 @@ const AuthenticationMiddleware = require('./middlewares/AuthenticationMiddleware
 const RefreshMiddleware = require('./middlewares/RefreshMiddleware');
 
 // Authentication Routes
-routes.post('/authenticate', AuthenticationController)
+routes.post('/authenticate', AuthenticationController);
 routes.post('/refresh', RefreshMiddleware, AuthenticationController);
 
 // Service Routes
@@ -39,7 +39,7 @@ routes.get('/me/purchases', AuthenticationMiddleware, );
 routes.get('/me/sales', AuthenticationMiddleware, );
 routes.get('/me/history', AuthenticationMiddleware, );
 
-routes.get('/me/pending', AuthenticationMiddleware, )
+routes.get('/me/pending', AuthenticationMiddleware, );
 
 routes.all('*', NotFoundController);
 
