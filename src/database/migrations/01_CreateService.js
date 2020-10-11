@@ -4,7 +4,6 @@ module.exports = {
             table.increments('id').primary();
             table.timestamp('created_at').defaultTo(knex.fn.now());
             table.string('from_cnpj').references('cnpj').inTable('company');
-            table.string('to_cnpj').references('cnpj').inTable('company');
             table.string('title').notNullable();
             table.string('description').notNullable();
             table.boolean('is_subscription').notNullable();

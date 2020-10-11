@@ -5,6 +5,8 @@ module.exports = {
             table.string('name').notNullable();
             table.string('getnet_id').unique().notNullable();
             table.string('password').notNullable();
+            table.decimal('longitude').notNullable();
+            table.decimal('latitude').notNullable();
         });
     },
 

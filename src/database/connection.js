@@ -3,4 +3,4 @@ const config = require('../../knexfile');
 
 const connection = knex(config);
 
-return connection;
+module.exports = connection;
