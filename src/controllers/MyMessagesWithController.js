@@ -1,8 +1,12 @@
 const connection = require('../database/connection');
 
+const messagesPerPage = process.env.MESSAGES_PER_PAGE || 50;
+console.log(`[ENVIRONMENT] Messages returned per page: ${messagesPerPage}`);
+
 module.exports = async function (request, response, next) {
     const { company: cnpj } = request.token;
     const { with: _with } = request.params;
+    const { page } = request.query;
 
     const withCnpj = _with.replace(/\D/g, '');
 
@@ -16,6 +20,8 @@ module.exports = async function (request, response, next) {
         const messages = await connection('message')
             .where(query => query.where('to_cnpj', cnpj).andWhere('from_cnpj', withCnpj))
             .orWhere(query => query.where('from_cnpj', cnpj).andWhere('to_cnpj', withCnpj))
+            .offset((Number(page) || 0) * servicesPerPage)
+            .limit(servicesPerPage)
             .select('*');
 
         if(!messages) {
