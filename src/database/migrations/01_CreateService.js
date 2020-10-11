@@ -3,7 +3,7 @@ module.exports = {
         return knex.schema.createTable('service', table => {
             table.increments('id').primary();
             table.timestamp('created_at').defaultTo(knex.fn.now());
-            table.string('from_cnpj').references('cnpj').inTable('company');
+            table.string('company_cnpj').references('cnpj').inTable('company');
             table.string('title').notNullable();
             table.string('description').notNullable();
             table.boolean('is_subscription').notNullable();

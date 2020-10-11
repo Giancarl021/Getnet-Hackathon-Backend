@@ -1,4 +1,4 @@
-module.exports = function (request, response) {
+module.exports = async function (request, response) {
     return response
         .status(404)
         .json({
