@@ -43,7 +43,8 @@ module.exports = async function (request, response, next) {
             .map(r => ({
                 ...r,
                 is_active: Boolean(r.is_active),
-                is_subscription: Boolean(r.is_subscription)
+                is_subscription: Boolean(r.is_subscription),
+                is_unitary_price: Boolean(r.is_unitary_price)
             }));
 
         if (order) {
