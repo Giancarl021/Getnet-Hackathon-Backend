@@ -1,6 +1,9 @@
 const connection = require('../database/connection');
 const distance = require('../util/distance');
 
+const servicesPerPage = process.env.SERVICES_PER_PAGE || 10;
+console.log(`Services returned per page: ${servicesPerPage}`);
+
 module.exports = async function (request, response, next) {
     const {
         type,
@@ -35,8 +38,8 @@ module.exports = async function (request, response, next) {
                     }
                 }
             })
-            .offset((Number(page) || 0) * 10)
-            .limit(10);
+            .offset((Number(page) || 0) * servicesPerPage)
+            .limit(servicesPerPage);
 
         if (order) {
             const coord = { x: Number(latitude), y: Number(longitude) };
