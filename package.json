@@ -1,0 +1,26 @@
+{
+  "name": "getnet-hackathon-backend",
+  "version": "0.1.0",
+  "description": "Backend da aplicação Getplace",
+  "main": "server.js",
+  "repository": "https://github.com/Giancarl021/Getnet-Hackathon-Backend.git",
+  "author": "Giancarlo Fontela da Luz <gian.f.luz@hotmail.com>",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon --ignore node_modules ."
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "celebrate": "^13.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.6",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
