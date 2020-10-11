@@ -9,6 +9,7 @@ module.exports = {
             table.double('price').notNullable();
             table.boolean('is_unitary_price').defaultTo(false);
             table.boolean('is_subscription').notNullable();
+            table.integer('subscription_span').defaultTo(0);
             table.integer('discount_percentage').notNullable();
             table.boolean('is_active').defaultTo(true);
         });

@@ -17,6 +17,7 @@ module.exports = {
                 price: 100,
                 is_unitary_price: false,
                 is_subscription: true,
+                subscription_span: 12,
                 discount_percentage: 10
             }
         ]);

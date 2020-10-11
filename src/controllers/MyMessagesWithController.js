@@ -3,6 +3,8 @@ const connection = require('../database/connection');
 const messagesPerPage = process.env.MESSAGES_PER_PAGE || 50;
 console.log(`[ENVIRONMENT] Messages returned per page: ${messagesPerPage}`);
 
+const servicesPerPage = process.env.SERVICES_PER_PAGE || 10;
+
 module.exports = async function (request, response, next) {
     const { company: cnpj } = request.token;
     const { with: _with } = request.params;
@@ -10,7 +12,7 @@ module.exports = async function (request, response, next) {
 
     const withCnpj = _with.replace(/\D/g, '');
 
-    if(!cnpj || !withCnpj) {
+    if(!cnpj || !withCnpj || (cnpj === withCnpj)) {
         return response.status(400).json({
             error: 'Invalid Company CNPJ'
         })
