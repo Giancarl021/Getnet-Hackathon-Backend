@@ -1,13 +1,21 @@
 const bcrypt = require('bcrypt');
-const generateToken = require('../util/generate-token');
+const generateToken = require('../util/generateToken');
 const connection = require('../database/connection');
 
 module.exports = async function (request, response) {
-    const { cnpj, password } = request.body;
+    const { cnpj: _cnpj, password } = request.body;
 
-    if (!username) {
+    const cnpj = _cnpj.replace(/\D/g, '');
+
+    if (!cnpj) {
         return response.status(400).json({
-            error: 'Missing username'
+            error: 'Missing CNPJ'
+        });
+    }
+
+    if (!password) {
+        return response.status(400).json({
+            error: 'Missing Password'
         });
     }
 
@@ -15,7 +23,7 @@ module.exports = async function (request, response) {
 
     if (!rows.length) {
         return response.status(400).json({
-            error: 'An user with this username does not exists'
+            error: 'Company with this CNPJ not found'
         });
     }
 

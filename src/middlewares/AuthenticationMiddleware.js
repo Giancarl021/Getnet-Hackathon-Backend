@@ -6,7 +6,7 @@ module.exports = async function (request, response, next) {
 
     if (!authorization) {
         return response.status(401).json({
-            error: 'No authorization token provided'
+            error: 'No Authorization token provided'
         });
     }
 

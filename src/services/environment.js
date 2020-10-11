@@ -15,7 +15,8 @@ module.exports = function () {
     }
 
     fs.writeFileSync(authPath, JSON.stringify({
-        secret: createSecret()
+        secret: createSecret(),
+        expiresIn: process.env.TOKEN_TTL || 3600
     }));
     
     console.log('[SECURITY] Generated new authentication secret on data/auth.json');
