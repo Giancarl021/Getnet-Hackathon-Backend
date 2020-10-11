@@ -22,7 +22,11 @@ module.exports = async function (request, response, next) {
             });
         }
 
-        return response.json(service);
+        return response.json({
+            ...service,
+            is_active: Boolean(service.is_active),
+            is_subscription: Boolean(service.is_subscription)
+        });
     } catch (err) {
         return next(err);
     }

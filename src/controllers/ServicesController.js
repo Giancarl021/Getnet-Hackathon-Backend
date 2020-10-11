@@ -16,7 +16,7 @@ module.exports = async function (request, response, next) {
     let order = false;
 
     try {
-        let rows = await connection('service')
+        let rows = (await connection('service')
             .modify(query => {
                 if (searchTerm) {
                     query.where('title', 'like', `%${searchTerm}%`);
@@ -39,7 +39,12 @@ module.exports = async function (request, response, next) {
                 }
             })
             .offset((Number(page) || 0) * servicesPerPage)
-            .limit(servicesPerPage);
+            .limit(servicesPerPage))
+            .map(r => ({
+                ...r,
+                is_active: Boolean(r.is_active),
+                is_subscription: Boolean(r.is_subscription)
+            }));
 
         if (order) {
             const coord = { x: Number(latitude), y: Number(longitude) };
