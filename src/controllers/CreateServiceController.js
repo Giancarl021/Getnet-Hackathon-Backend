@@ -20,6 +20,15 @@ module.exports = async function (request, response, next) {
         });
     }
 
+    const service = await connection('service')
+        .first()
+        .where('company_cnpj', cnpj)
+        .select(1);
+
+    if (service) return response.status(400).json({
+        error: 'You already have a service registered'
+    });
+
     if (!cnpj) {
         return response.status(400).json({
             error: 'Invalid Company CNPJ'

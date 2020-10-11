@@ -32,7 +32,16 @@ module.exports = async function (request, response, next) {
     if (!Object.keys(row).length) return response.status(400).json({
         error: 'Empty update'
     });
-    
+
+    const service = await connection('service')
+        .first()
+        .where('company_cnpj', cnpj)
+        .select(1);
+
+    if (!service) return response.status(400).json({
+        error: 'You do not have a service registered'
+    });
+
     if (!cnpj) {
         return response.status(400).json({
             error: 'Invalid Company CNPJ'

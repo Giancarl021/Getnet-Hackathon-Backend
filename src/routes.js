@@ -38,8 +38,7 @@ routes.post('/services/:id', AuthenticationMiddleware, RequireServiceController)
 routes.get('/company/:cnpj', AuthenticationMiddleware, CompanyController);
 
 // Exchange Routes
-
-// routes.post('/exchange');
+// ...
 
 // Profile Routes
 routes.get('/me', AuthenticationMiddleware, MeController);

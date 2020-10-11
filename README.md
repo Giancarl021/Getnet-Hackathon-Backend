@@ -165,6 +165,29 @@ Authorization: "Bearer ..."
 }
 ```
 
+### Publicar meu serviço
+**Requisição**
+```
+GET /me/service
+Authorization: "Bearer ..."
+```
+**Resposta**
+```json
+{
+    "id": 0,
+    "created_at": 0,
+    "title": "...",
+    "description": "...",
+    "price": 0,
+    "is_unitary_price": true,
+    "is_subscription": true,
+    "subscription_span": 0,
+    "discount_percentage": 0,
+    "is_active": true
+}
+```
+
+
 ### Listar serviços disponíveis
 
 **Requisição**
