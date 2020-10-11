@@ -15,8 +15,6 @@ module.exports = async function (request, response, next) {
     try {
         let rows = await connection('service')
             .modify(query => {
-                const lat = Number(latitude);
-                const long = Number(longitude);
                 if (searchTerm) {
                     query.where('title', 'like', `%${searchTerm}%`);
                 }
