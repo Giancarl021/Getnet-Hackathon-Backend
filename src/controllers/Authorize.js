@@ -19,7 +19,7 @@ module.exports = async function (request, response) {
         });
     }
 
-    const user = rows[0].username;
+    const company = rows[0].cnpj;
 
     const result = bcrypt.compareSync(password, rows[0].password);
 
@@ -30,13 +30,13 @@ module.exports = async function (request, response) {
     }
 
     const { bearerToken, expiresIn, refreshToken } = generateToken({
-        username: user
+        company: cnpj
     });
 
-    refreshTokens[refreshToken] = { username, password };
+    refreshTokens[refreshToken] = { cnpj, password };
 
     return response.status(200).json({
-        user,
+        company,
         bearer_token: bearerToken,
         expires_in: expiresIn,
         refresh_token: refreshToken
