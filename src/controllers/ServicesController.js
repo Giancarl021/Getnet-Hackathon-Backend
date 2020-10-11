@@ -2,7 +2,7 @@ const connection = require('../database/connection');
 const distance = require('../util/distance');
 
 const servicesPerPage = process.env.SERVICES_PER_PAGE || 10;
-console.log(`[ENV] Services returned per page: ${servicesPerPage}`);
+console.log(`[ENVIRONMENT] Services returned per page: ${servicesPerPage}`);
 
 module.exports = async function (request, response, next) {
     const {

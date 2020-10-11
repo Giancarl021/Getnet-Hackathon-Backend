@@ -7,6 +7,7 @@ const ServiceController = require('./controllers/ServiceController');
 const CompanyController = require('./controllers/CompanyController');
 const MeController = require('./controllers/MeController');
 const MyMessagesController = require('./controllers/MyMessagesController');
+const MyMessagesWithController = require('./controllers/MyMessagesWithController');
 
 const NotFoundController = require('./controllers/NotFoundController');
 
@@ -30,7 +31,7 @@ routes.get('/company/:cnpj', AuthenticationMiddleware, CompanyController);
 routes.get('/me', AuthenticationMiddleware, MeController);
 
 routes.get('/me/messages', AuthenticationMiddleware, MyMessagesController);
-routes.get('/me/messages/:from', AuthenticationMiddleware, );
+routes.get('/me/messages/:with', AuthenticationMiddleware, MyMessagesWithController);
 routes.post('/me/messages/:to', AuthenticationMiddleware, );
 
 routes.get('/me/service', AuthenticationMiddleware, );

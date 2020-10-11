@@ -7,6 +7,6 @@ const app = require('./src/app');
 
 const port = process.env.PORT || 3000;
 
-console.log('[ENV] Port set to: ' + port);
+console.log('[ENVIRONMENT] Port: ' + port);
 
 app.listen(port, () => console.log('[STATUS] Server listening...'));
