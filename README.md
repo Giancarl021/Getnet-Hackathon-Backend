@@ -386,3 +386,16 @@ Authorization: "Bearer ..."
     }
 ]
 ```
+
+### Pagar transação
+
+```
+GET me/pay/:id
+Authorization: "Bearer ..."
+```
+**Resposta**
+```json
+{
+    "status": "Trade paid"
+}
+```
