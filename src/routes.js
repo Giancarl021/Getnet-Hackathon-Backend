@@ -17,13 +17,13 @@ const MyPurchasesController = require('./controllers/MyPurchasesController');
 const MySalesController = require('./controllers/MySalesController');
 const MyPendingTradesController = require('./controllers/MyPendingTradesController');
 const MyHistoryController = require('./controllers/MyHistoryController');
+const PayTradeController = require('./controllers/PayTradeController');
 
 const NotFoundController = require('./controllers/NotFoundController');
 const GetNetAuthenticationController = require('./controllers/GetNetAuthenticationController')
 
 const AuthenticationMiddleware = require('./middlewares/AuthenticationMiddleware');
 const RefreshMiddleware = require('./middlewares/RefreshMiddleware');
-;
 
 // Authentication Routes
 routes.post('/authenticate', AuthenticationController);
@@ -56,6 +56,7 @@ routes.get('/me/sales', AuthenticationMiddleware, MySalesController);
 routes.get('/me/history', AuthenticationMiddleware, MyHistoryController);
 
 routes.get('/me/pending', AuthenticationMiddleware, MyPendingTradesController);
+routes.get('/me/pay/:id', AuthenticationMiddleware, PayTradeController);
 
 // Getnet Authentication
 routes.get('/getnet-authentication', AuthenticationMiddleware, GetNetAuthenticationController);
