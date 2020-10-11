@@ -5,13 +5,14 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const ServicesController = require('./controllers/ServicesController');
 const ServiceController = require('./controllers/ServiceController');
 const CompanyController = require('./controllers/CompanyController');
-
 const MeController = require('./controllers/MeController');
+const MyMessagesController = require('./controllers/MyMessagesController');
 
 const NotFoundController = require('./controllers/NotFoundController');
 
 const AuthenticationMiddleware = require('./middlewares/AuthenticationMiddleware');
 const RefreshMiddleware = require('./middlewares/RefreshMiddleware');
+
 
 // Authentication Routes
 routes.post('/authenticate', AuthenticationController);
@@ -28,7 +29,7 @@ routes.get('/company/:cnpj', AuthenticationMiddleware, CompanyController);
 // Profile Routes
 routes.get('/me', AuthenticationMiddleware, MeController);
 
-routes.get('/me/messages', AuthenticationMiddleware, );
+routes.get('/me/messages', AuthenticationMiddleware, MyMessagesController);
 routes.get('/me/messages/:from', AuthenticationMiddleware, );
 routes.post('/me/messages/:to', AuthenticationMiddleware, );
 
