@@ -7,18 +7,19 @@ const ServiceController = require('./controllers/ServiceController');
 const CompanyController = require('./controllers/CompanyController');
 const NotFoundController = require('./controllers/NotFoundController');
 
-const AuthenticationMiddleware = require('./middlewares/AuthenticationMiddleware')
+const AuthenticationMiddleware = require('./middlewares/AuthenticationMiddleware');
+const RefreshMiddleware = require('./middlewares/RefreshMiddleware');
 
 // Authentication Routes
 routes.post('/authenticate', AuthenticationController)
-// routes.post('/refresh', RefreshController);
+routes.post('/refresh', RefreshMiddleware, AuthenticationController);
 
 // Service Routes
 routes.get('/services', AuthenticationMiddleware, ServicesController);
-routes.get('/services/:id', ServiceController);
+routes.get('/services/:id', AuthenticationMiddleware, ServiceController);
 
 // Company Routes
-routes.get('/company/:cnpj', CompanyController);
+routes.get('/company/:cnpj', AuthenticationMiddleware, CompanyController);
 
 
 // routes.get('/me');

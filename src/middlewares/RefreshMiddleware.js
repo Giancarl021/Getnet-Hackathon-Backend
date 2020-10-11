@@ -7,16 +7,16 @@ module.exports = async function (request, response, next) {
         });
     }
 
-    const user = refreshTokens[key];
+    const company = refreshTokens[key];
 
-    if(!user) {
+    if(!company) {
         return response.status(401).json({
             error: 'Invalid refresh token'
         });
     }
 
-    request.body.username = user.username;
-    request.body.password = user.password;
+    request.body.cnpj = company.cnpj;
+    request.body.password = company.password;
 
     delete refreshTokens[key];
 
