@@ -12,6 +12,7 @@ const MyMessagesWithController = require('./controllers/MyMessagesWithController
 const SendMessageController = require('./controllers/SendMessageController');
 const MyServiceController = require('./controllers/MyServiceController');
 const CreateServiceController = require('./controllers/CreateServiceController');
+const EditServiceController = require('./controllers/EditServiceController');
 const MyPurchasesController = require('./controllers/MyPurchasesController');
 const MySalesController = require('./controllers/MySalesController');
 const MyPendingTradesController = require('./controllers/MyPendingTradesController');
@@ -48,8 +49,8 @@ routes.get('/me/messages/:with', AuthenticationMiddleware, MyMessagesWithControl
 routes.post('/me/messages/:to', AuthenticationMiddleware, SendMessageController);
 
 routes.get('/me/service', AuthenticationMiddleware, MyServiceController);
-routes.put('/me/service', AuthenticationMiddleware, CreateServiceController);
-routes.post('/me/service', AuthenticationMiddleware, );
+routes.put('/me/service', AuthenticationMiddleware, EditServiceController);
+routes.post('/me/service', AuthenticationMiddleware, CreateServiceController);
 
 routes.get('/me/purchases', AuthenticationMiddleware, MyPurchasesController);
 routes.get('/me/sales', AuthenticationMiddleware, MySalesController);

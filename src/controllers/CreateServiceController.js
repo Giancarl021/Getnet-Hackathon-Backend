@@ -7,12 +7,18 @@ module.exports = async function (request, response, next) {
         title,
         description,
         price,
-        is_unitary_price,
+        is_unitary_price = false,
         is_subscription,
         subscription_span,
         discount_percentage,
-        is_active
+        is_active = true
     } = request.body;
+
+    if (!title || !description || !price || !discount_percentage || (is_subscription && !subscription_span)) {
+        return response.status(400).json({
+            error: 'Missing required fields'
+        });
+    }
 
     if (!cnpj) {
         return response.status(400).json({
