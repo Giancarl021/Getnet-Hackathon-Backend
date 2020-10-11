@@ -47,7 +47,7 @@ module.exports = async function (request, response, next) {
                 trade.push({
                     from_cnpj: cnpj,
                     service_id: serviceId,
-                    expires_in: date,
+                    expires: date,
                     value: service.price
                 });
                 date.setMonth(date.getMonth() + 1);
@@ -62,7 +62,7 @@ module.exports = async function (request, response, next) {
             trade = {
                 from_cnpj: cnpj,
                 service_id: serviceId,
-                expires_in: date,
+                expires: date,
                 value: service.price * (service.is_unitary_price ? quantity : 1)
             };
         }

@@ -64,6 +64,20 @@ POST /authenticate
 
 ## Rotas
 
+### Token Getnet
+
+**Requisição**
+```
+GET /getnet-authentication
+Authorization: "Bearer ..."
+```
+**Resposta**
+```json
+{
+    "bearer_token": "..."
+}
+```
+
 ### Meu perfil
 
 **Requisição**
@@ -165,25 +179,41 @@ Authorization: "Bearer ..."
 }
 ```
 
-### Publicar meu serviço
+### Editar meu Serviço`
+
 **Requisição**
 ```
-GET /me/service
+PUT /me/service
 Authorization: "Bearer ..."
+{
+    "title": "..."
+}
 ```
 **Resposta**
 ```json
 {
-    "id": 0,
-    "created_at": 0,
+    "status": "Service updated"
+}
+```
+
+### Criar meu serviço
+**Requisição**
+```
+POST /me/service
+Authorization: "Bearer ..."
+{
     "title": "...",
     "description": "...",
+    "is_subscription": true,
     "price": 0,
     "is_unitary_price": true,
-    "is_subscription": true,
-    "subscription_span": 0,
-    "discount_percentage": 0,
-    "is_active": true
+    "discount_percentage": 0
+}
+```
+**Resposta**
+```json
+{
+    "status": "Service created"
 }
 ```
 
@@ -267,4 +297,92 @@ Authorization: "Bearer ..."
     "latitude": 0,
     "longitude": 0
 }
+```
+
+### Minhas compras
+
+**Requisição**
+```
+GET me/purchases
+Authorization: "Bearer ..."
+```
+**Resposta**
+```json
+[
+    {
+        "id": 0,
+        "created_at": 0,
+        "from_cnpj": "...",
+        "service_id": 0,
+        "is_pending": true,
+        "expires_in": 0,
+        "value": 0
+    }
+]
+```
+
+### Minhas vendas
+
+**Requisição**
+```
+GET me/sales
+Authorization: "Bearer ..."
+```
+**Resposta**
+```json
+[
+    {
+        "id": 0,
+        "created_at": 0,
+        "from_cnpj": "...",
+        "service_id": 0,
+        "is_pending": true,
+        "expires_in": 0,
+        "value": 0
+    }
+]
+```
+
+### Meu histórico de transações
+
+**Requisição**
+```
+GET me/history
+Authorization: "Bearer ..."
+```
+**Resposta**
+```json
+[
+    {
+        "id": 0,
+        "created_at": 0,
+        "from_cnpj": "...",
+        "service_id": 0,
+        "is_pending": true,
+        "expires_in": 0,
+        "value": 0
+    }
+]
+```
+
+### Minhas transações pendentes
+
+**Requisição**
+```
+GET me/pending
+Authorization: "Bearer ..."
+```
+**Resposta**
+```json
+[
+    {
+        "id": 0,
+        "created_at": 0,
+        "from_cnpj": "...",
+        "service_id": 0,
+        "is_pending": true,
+        "expires_in": 0,
+        "value": 0
+    }
+]
 ```

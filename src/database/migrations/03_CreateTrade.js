@@ -6,7 +6,7 @@ module.exports = {
             table.string('from_cnpj').references('cnpj').inTable('company');
             table.string('service_id').references('cnpj').inTable('company');
             table.boolean('is_pending').defaultTo(true);
-            table.timestamp('expires_in').notNullable();
+            table.timestamp('expires').notNullable();
             table.double('value').notNullable();
         });
     },
