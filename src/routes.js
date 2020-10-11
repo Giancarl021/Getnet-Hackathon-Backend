@@ -20,6 +20,7 @@ routes.post('/refresh', RefreshMiddleware, AuthenticationController);
 // Service Routes
 routes.get('/services', AuthenticationMiddleware, ServicesController);
 routes.get('/services/:id', AuthenticationMiddleware, ServiceController);
+routes.post('/services/:id', AuthenticationMiddleware, );
 
 // Company Routes
 routes.get('/company/:cnpj', AuthenticationMiddleware, CompanyController);
