@@ -22,10 +22,10 @@ module.exports = async function (request, response, next) {
             });
         }
 
-        const sent = channelify(messages.filter(message => message.from_cnpj === cnpj), 'to_cnpj', true, 'from_cnpj');
-        const received = channelify(messages.filter(message => message.to_cnpj === cnpj), 'from_cnpj', true, 'to_cnpj');
+        const sent = channelify(messages.filter(message => message.from_cnpj === cnpj), 'to_cnpj');
+        const received = channelify(messages.filter(message => message.to_cnpj === cnpj), 'from_cnpj');
 
-        return response.json({ sent, received });
+        return response.json([ ...new Set([ ...sent, ...received ]) ]);
     } catch (err) {
         return next(err);
     }
