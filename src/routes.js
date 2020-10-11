@@ -9,6 +9,7 @@ const MeController = require('./controllers/MeController');
 const MyMessagesController = require('./controllers/MyMessagesController');
 const MyMessagesWithController = require('./controllers/MyMessagesWithController');
 const SendMessageController = require('./controllers/SendMessageController');
+const MyServiceController = require('./controllers/MyServiceController');
 
 const NotFoundController = require('./controllers/NotFoundController');
 
@@ -28,6 +29,8 @@ routes.post('/services/:id', AuthenticationMiddleware, );
 // Company Routes
 routes.get('/company/:cnpj', AuthenticationMiddleware, CompanyController);
 
+// routes.post('/exchange');
+
 // Profile Routes
 routes.get('/me', AuthenticationMiddleware, MeController);
 
@@ -35,7 +38,7 @@ routes.get('/me/messages', AuthenticationMiddleware, MyMessagesController);
 routes.get('/me/messages/:with', AuthenticationMiddleware, MyMessagesWithController);
 routes.post('/me/messages/:to', AuthenticationMiddleware, SendMessageController);
 
-routes.get('/me/service', AuthenticationMiddleware, );
+routes.get('/me/service', AuthenticationMiddleware, MyServiceController);
 routes.put('/me/service', AuthenticationMiddleware, );
 routes.post('/me/service', AuthenticationMiddleware, );
 
@@ -45,6 +48,6 @@ routes.get('/me/history', AuthenticationMiddleware, );
 
 routes.get('/me/pending', AuthenticationMiddleware, );
 
-routes.all('*', NotFoundController);
+routes.all('*', AuthenticationMiddleware, NotFoundController);
 
 module.exports = routes;
