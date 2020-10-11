@@ -14,6 +14,7 @@ const MyServiceController = require('./controllers/MyServiceController');
 const MyPurchasesController = require('./controllers/MyPurchasesController');
 const MySalesController = require('./controllers/MySalesController');
 const MyPendingTradesController = require('./controllers/MyPendingTradesController');
+const MyHistoryController = require('./controllers/MyHistoryController');
 
 const NotFoundController = require('./controllers/NotFoundController');
 
@@ -50,7 +51,7 @@ routes.post('/me/service', AuthenticationMiddleware, );
 
 routes.get('/me/purchases', AuthenticationMiddleware, MyPurchasesController);
 routes.get('/me/sales', AuthenticationMiddleware, MySalesController);
-routes.get('/me/history', AuthenticationMiddleware, );
+routes.get('/me/history', AuthenticationMiddleware, MyHistoryController);
 
 routes.get('/me/pending', AuthenticationMiddleware, MyPendingTradesController);
 
