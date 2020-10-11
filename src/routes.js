@@ -11,16 +11,18 @@ const MyMessagesController = require('./controllers/MyMessagesController');
 const MyMessagesWithController = require('./controllers/MyMessagesWithController');
 const SendMessageController = require('./controllers/SendMessageController');
 const MyServiceController = require('./controllers/MyServiceController');
+const CreateServiceController = require('./controllers/CreateServiceController');
 const MyPurchasesController = require('./controllers/MyPurchasesController');
 const MySalesController = require('./controllers/MySalesController');
 const MyPendingTradesController = require('./controllers/MyPendingTradesController');
 const MyHistoryController = require('./controllers/MyHistoryController');
 
 const NotFoundController = require('./controllers/NotFoundController');
+const GetNetAuthenticationController = require('./controllers/GetNetAuthenticationController')
 
 const AuthenticationMiddleware = require('./middlewares/AuthenticationMiddleware');
 const RefreshMiddleware = require('./middlewares/RefreshMiddleware');
-
+;
 
 // Authentication Routes
 routes.post('/authenticate', AuthenticationController);
@@ -46,7 +48,7 @@ routes.get('/me/messages/:with', AuthenticationMiddleware, MyMessagesWithControl
 routes.post('/me/messages/:to', AuthenticationMiddleware, SendMessageController);
 
 routes.get('/me/service', AuthenticationMiddleware, MyServiceController);
-routes.put('/me/service', AuthenticationMiddleware, );
+routes.put('/me/service', AuthenticationMiddleware, CreateServiceController);
 routes.post('/me/service', AuthenticationMiddleware, );
 
 routes.get('/me/purchases', AuthenticationMiddleware, MyPurchasesController);
@@ -54,6 +56,9 @@ routes.get('/me/sales', AuthenticationMiddleware, MySalesController);
 routes.get('/me/history', AuthenticationMiddleware, MyHistoryController);
 
 routes.get('/me/pending', AuthenticationMiddleware, MyPendingTradesController);
+
+// Getnet Authentication
+routes.get('/getnet-authentication', AuthenticationMiddleware, GetNetAuthenticationController);
 
 routes.all('*', AuthenticationMiddleware, NotFoundController);
 
