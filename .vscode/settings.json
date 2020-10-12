@@ -1,7 +1,8 @@
 {
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
-        ".vscode{,/**}"
+        ".vscode{,/**}",
+        "src/database/db.sqlite"
     ],
     "appService.defaultWebAppToDeploy": "/subscriptions/c14897c1-e5ee-4de0-af09-5c2373672ed2/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/getnet-hackathon-backend",
     "appService.deploySubpath": "."
