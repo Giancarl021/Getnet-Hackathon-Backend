@@ -19,7 +19,7 @@ module.exports = async function (request, response, next) {
             .first()
             .where('id', id)
             .andWhere('is_pending', true)
-            .select('*');
+            .select(1);
         
         if(!trade) {
             return response.status(400).json({
