@@ -32,7 +32,7 @@ module.exports = async function (request, response, next) {
         decoded = jwt.verify(token, auth.secret);
     } catch (err) {
         return response.status(401).json({
-            error: 'Invalid token'
+            error: 'Invalid token: ' + err.message
         });
     }
 

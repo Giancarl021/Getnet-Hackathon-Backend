@@ -25,7 +25,6 @@ module.exports = async function () {
 
         return response.access_token;
     } catch (err) {
-        console.log(getToken());
         throw new Error(err.response.data.error_description || err.response.data.error);
     }
 
