@@ -9,7 +9,9 @@
     "start": "node .",
     "dev": "nodemon --ignore node_modules --ignore data .",
     "knex:rebuild": "knex migrate:rollback && knex migrate:latest && knex seed:run",
-    "first-run": "knex migrate:latest && knex seed:run"
+    "knex:rebuild-prod": "knex migrate:rollback --env production && knex migrate:latest --env production && knex seed:run --env production",
+    "first-run": "knex migrate:latest && knex seed:run",
+    "prod-setup": "knex migrate:latest --env production && knex seed:run --env production"
   },
   "license": "MIT",
   "dependencies": {
@@ -20,6 +22,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.6",
+    "mssql": "^6.2.3",
     "querystring": "^0.2.0",
     "rand-token": "^1.0.1",
     "sqlite3": "^5.0.0"

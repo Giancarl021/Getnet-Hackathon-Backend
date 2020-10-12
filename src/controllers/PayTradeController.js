@@ -15,6 +15,18 @@ module.exports = async function (request, response, next) {
     });
 
     try {
+        const trade = await connection('trade')
+            .first()
+            .where('id', id)
+            .andWhere('is_pending', true)
+            .select('*');
+        
+        if(!trade) {
+            return response.status(400).json({
+                error: 'Invalid Trade ID'
+            });
+        }
+
         await connection('trade')
         .where('id', id)
         .update({
